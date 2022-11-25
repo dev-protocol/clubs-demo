@@ -14,9 +14,8 @@ import perks from '@plugins/perks'
 import quests from '@plugins/quests'
 import message from '@plugins/message'
 
-const { site, page } = Astro.params
-const { getStaticPaths, getCurrentConfig } = pageFactory({
-  config: async () => await _config(site),
+export const { getStaticPaths, getCurrentConfig } = pageFactory({
+  config: async () => _config(),
   plugins: {
     buy,
     community,
@@ -31,14 +30,10 @@ const { getStaticPaths, getCurrentConfig } = pageFactory({
     quests,
   },
 })
-const path = (await getStaticPaths()).find(({ params }) => params.page === page)
-if (!path) {
-  throw new Error('Path undefined: ', path)
-}
-const Content = path.props.component
+const Content = Astro.props.component
 const config = await getCurrentConfig()
 ---
 
 <Layout {config}>
-  <Content {...path.props} />
+  <Content {...Astro.props} />
 </Layout>

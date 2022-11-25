@@ -11,9 +11,7 @@
     "lint:eslint": "eslint --fix \"**/*.{js,mjs,cjs}\"",
     "lint:prettier": "prettier -w --ignore-path .astro.prettierignore --no-error-on-unmatched-pattern .",
     "lint:prettier:astro": "yarn prettier -w **/*.astro || echo '🙈 > ignored some errors of prettier for astro'",
-    "prepare": "husky install",
-    "install": "node ./ugly.mjs",
-    "populate": "node ./scripts/populate.mjs"
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@astrojs/prefetch": "0.1.1",
